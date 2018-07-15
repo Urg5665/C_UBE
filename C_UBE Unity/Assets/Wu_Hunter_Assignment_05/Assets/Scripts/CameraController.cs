@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour {
     [SerializeField]
     private GameObject pcObj;
     [SerializeField]
-    private float camDistance = 5f;
+    private float camDistance = 0f;
 
     private float currentX = 0.0f;
     private float currentY = 0.0f;
