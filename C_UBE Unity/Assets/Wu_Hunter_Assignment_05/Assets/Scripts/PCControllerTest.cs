@@ -15,7 +15,7 @@ public class PCControllerTest : MonoBehaviour {
     [SerializeField]
     private float airMaxSpeed = 6f;
     [SerializeField]
-    private float airMaxAccel = .1f;
+    private float airMaxAccel = 1f;
 	[SerializeField]
 	private float walkableAngle = 60;
 
@@ -34,58 +34,68 @@ public class PCControllerTest : MonoBehaviour {
         Vector3 facing = pcCamera.transform.forward;
         Vector3 rightfacing = pcCamera.transform.right;
 
+
         facing.y = 0;
         rightfacing.y = 0;
 
+        if (!Input.GetKey(KeyCode.W))
+        {
+            pcRigidbody.velocity = new Vector3(0, 0, 0);
+        }
         if (Input.GetKey(KeyCode.W))
         {
-            currentFacing += facing;
+            pcRigidbody.velocity = facing * 5;
+
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            currentFacing -= facing; 
+            pcRigidbody.velocity = -facing * 5;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            currentFacing += rightfacing;  
+            pcRigidbody.velocity = rightfacing * 2.5f;  
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            currentFacing -= rightfacing;
+            pcRigidbody.velocity  = -rightfacing * 2.5f;
+
         }
+
+
+
 
         //ground functions
-		if (currentGround != null)
-        {
-           
+        if (currentGround != null)
+                {
 
-            if ((Input.GetKey(KeyCode.W)) || (Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.D)))
-            {
-                pcRigidbody.velocity = transform.forward * groundSpeed + new Vector3(0, pcRigidbody.velocity.y, 0);
-            }
 
-            if ((Input.GetKey(KeyCode.Space)))
-            {
-                pcRigidbody.velocity = new Vector3(pcRigidbody.velocity.x, jumpForce, pcRigidbody.velocity.z);
-            }
+                    if ((Input.GetKey(KeyCode.W)) || (Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.D)))
+                    {
+                        pcRigidbody.velocity = transform.forward * groundSpeed + new Vector3(0, pcRigidbody.velocity.y, 0);
+                    }
 
-			RotateDo ();
-        }
-        else //if not grounded
-        {
-         
-            if ((Input.GetKey(KeyCode.W)) || (Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.D)))
-            {
-                pcRigidbody.velocity = AirVelocityAccelerate(pcRigidbody, airMaxAccel, airMaxSpeed);
-            }
+                    if ((Input.GetKey(KeyCode.Space)))
+                    {
+                        pcRigidbody.velocity = new Vector3(pcRigidbody.velocity.x, jumpForce, pcRigidbody.velocity.z);
+                    }
 
-			RotateDo ();
+                    RotateDo ();
+                } 
+        /*  else //if not grounded
+          {
 
-        }
-      
+              if ((Input.GetKey(KeyCode.W)) || (Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.D)))
+              {
+                  pcRigidbody.velocity = AirVelocityAccelerate(pcRigidbody, airMaxAccel, airMaxSpeed);
+              }
+
+              RotateDo ();
+
+          }*/
+
     }
 
     private bool IsGrounded()
@@ -127,7 +137,7 @@ public class PCControllerTest : MonoBehaviour {
     }
 
 
-    private Vector3 AirVelocityAccelerate(Rigidbody acceleratingBody, float maxAccel, float maxSpeed)
+   /* private Vector3 AirVelocityAccelerate(Rigidbody acceleratingBody, float maxAccel, float maxSpeed)
     {
 
         Vector3 calcVelocity;
@@ -143,7 +153,7 @@ public class PCControllerTest : MonoBehaviour {
         calcVelocity = transform.forward * Mathf.Min(Mag, maxSpeed) + new Vector3(0, acceleratingBody.velocity.y, 0);
 
         return calcVelocity;
-    }
+    } */
 
 	private void RotateDo()
 	{
