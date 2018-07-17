@@ -42,8 +42,6 @@ public class CameraController : MonoBehaviour {
         transform.position = Vector3.Lerp(transform.position, pcObj.transform.position + rotation * dir, 8f * Time.deltaTime);
         transform.LookAt(pcObj.transform.position);
 
-
-
     }
 
 

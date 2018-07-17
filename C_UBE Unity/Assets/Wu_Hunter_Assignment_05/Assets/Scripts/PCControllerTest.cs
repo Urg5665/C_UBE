@@ -44,13 +44,13 @@ public class PCControllerTest : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.W))
         {
-            pcRigidbody.velocity = facing * 5;
+            pcRigidbody.velocity = facing * groundSpeed;
 
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            pcRigidbody.velocity = -facing * 5;
+            pcRigidbody.velocity = -facing * groundSpeed;
         }
 
         if (Input.GetKey(KeyCode.D))
