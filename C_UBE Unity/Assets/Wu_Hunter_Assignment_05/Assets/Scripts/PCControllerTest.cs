@@ -38,20 +38,20 @@ public class PCControllerTest : MonoBehaviour {
         facing.y = 0;
         rightfacing.y = 0;
 
-        if (!Input.GetKey(KeyCode.W))
-        {
-            pcRigidbody.velocity = new Vector3(0, 0, 0);
-        }
+        pcRigidbody.velocity = new Vector3(0, 0, 0);
+
         if (Input.GetKey(KeyCode.W))
         {
             pcRigidbody.velocity = facing * groundSpeed;
+            
 
         }
-
+        
         if (Input.GetKey(KeyCode.S))
         {
             pcRigidbody.velocity = -facing * groundSpeed;
         }
+        
 
         if (Input.GetKey(KeyCode.D))
         {
