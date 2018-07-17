@@ -17,7 +17,7 @@ public class PCControllerTest : MonoBehaviour {
     [SerializeField]
     private float airMaxAccel = 1f;
 	[SerializeField]
-	private float walkableAngle = 60;
+	private float walkableAngle = 60; 
 
     private Vector3 currentFacing;
     // Use this for initialization
@@ -55,12 +55,12 @@ public class PCControllerTest : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.D))
         {
-            pcRigidbody.velocity = rightfacing * 2.5f;  
+            pcRigidbody.velocity = rightfacing * 5;  
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            pcRigidbody.velocity  = -rightfacing * 2.5f;
+            pcRigidbody.velocity  = -rightfacing * 5;
 
         }
 
@@ -72,17 +72,17 @@ public class PCControllerTest : MonoBehaviour {
                 {
 
 
-                    if ((Input.GetKey(KeyCode.W)) || (Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.D)))
+                   /* if ((Input.GetKey(KeyCode.W)) || (Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.D)))
                     {
                         pcRigidbody.velocity = transform.forward * groundSpeed + new Vector3(0, pcRigidbody.velocity.y, 0);
-                    }
+                    } */
 
                     if ((Input.GetKey(KeyCode.Space)))
                     {
                         pcRigidbody.velocity = new Vector3(pcRigidbody.velocity.x, jumpForce, pcRigidbody.velocity.z);
                     }
 
-                    RotateDo ();
+                    //RotateDo ();
                 } 
         /*  else //if not grounded
           {
@@ -155,7 +155,7 @@ public class PCControllerTest : MonoBehaviour {
         return calcVelocity;
     } */
 
-	private void RotateDo()
+	/*private void RotateDo()
 	{
 		if (currentFacing != Vector3.zero) 
 		{
@@ -163,7 +163,7 @@ public class PCControllerTest : MonoBehaviour {
 				(transform.rotation, Quaternion.LookRotation(currentFacing.normalized), 1000f * Time.deltaTime));
 			currentFacing = Vector3.zero;
 		}
-	}
+	} */
 
 
 
