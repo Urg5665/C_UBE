@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PCControllerTest : MonoBehaviour {
     private Rigidbody pcRigidbody;
+    private Rigidbody cameraRigidbody;
+
     private GameObject pcCamera;
 	private GameObject currentGround;
 
 
     [SerializeField]
-    private float groundSpeed = 7f; //7f is a default but overwriteable value
+    private float groundSpeed = 15f; //7f is a default but overwriteable value
     [SerializeField]
     private float jumpForce = 7f;
     [SerializeField]
@@ -24,6 +26,8 @@ public class PCControllerTest : MonoBehaviour {
     void Start () {
 		pcRigidbody = GetComponent<Rigidbody>();
         pcCamera = Camera.main.gameObject;
+
+        cameraRigidbody = pcCamera.GetComponent<Rigidbody>();
         
 	}
 
@@ -44,23 +48,25 @@ public class PCControllerTest : MonoBehaviour {
         {
             pcRigidbody.velocity = facing * groundSpeed;
             
-
         }
         
         if (Input.GetKey(KeyCode.S))
         {
             pcRigidbody.velocity = -facing * groundSpeed;
+            
         }
         
 
         if (Input.GetKey(KeyCode.D))
         {
-            pcRigidbody.velocity = rightfacing * 5;  
+            pcRigidbody.velocity = rightfacing * groundSpeed;
+            cameraRigidbody.velocity = rightfacing * groundSpeed;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            pcRigidbody.velocity  = -rightfacing * 5;
+            pcRigidbody.velocity  = -rightfacing * groundSpeed;
+            cameraRigidbody.velocity = -rightfacing * groundSpeed ;
 
         }
 

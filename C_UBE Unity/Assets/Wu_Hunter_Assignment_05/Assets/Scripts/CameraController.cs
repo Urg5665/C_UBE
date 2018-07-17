@@ -34,15 +34,24 @@ public class CameraController : MonoBehaviour {
         Vector3 dir = new Vector3(0, 0, -camDistance);
         //set the rotation of the camera
         Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
-       
+
         //lerp camera positon to new positoin                 -define new position as pc positon, offset by the rotation, 
-                                                                                //Move Backwards 
+        //Move Backwards 
 
         //multiplying a positiong by a qyaternion rotatest the positon
-        transform.position = Vector3.Lerp(transform.position, pcObj.transform.position + rotation * dir, 8f * Time.deltaTime);
-        transform.LookAt(pcObj.transform.position);
+ 
+            transform.position = Vector3.Lerp(transform.position, pcObj.transform.position + rotation * dir, 16f * Time.deltaTime);
+            transform.LookAt(pcObj.transform.position);
+
+        
+
+
+
+
+
 
     }
-
-
 }
+//        if ((Input.GetKey(KeyCode.D))|| (Input.GetKey(KeyCode.A)))
+        
+
