@@ -59,14 +59,16 @@ public class PCControllerTest : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.D))
         {
-            pcRigidbody.velocity = rightfacing * groundSpeed;
             cameraRigidbody.velocity = rightfacing * groundSpeed;
+            pcRigidbody.velocity = rightfacing * groundSpeed;
+            
         }
 
         if (Input.GetKey(KeyCode.A))
         {
+            cameraRigidbody.velocity = -rightfacing * groundSpeed;
             pcRigidbody.velocity  = -rightfacing * groundSpeed;
-            cameraRigidbody.velocity = -rightfacing * groundSpeed ;
+            
 
         }
 

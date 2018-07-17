@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour {
-    
+    private GameObject cameraObject;
+
     [SerializeField]
     private GameObject pcObj;
     [SerializeField]
@@ -16,7 +17,7 @@ public class CameraController : MonoBehaviour {
     void Start () {
       
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.visible = true;
 		
 	}
 	// Update is called once per frame
@@ -39,12 +40,11 @@ public class CameraController : MonoBehaviour {
         //Move Backwards 
 
         //multiplying a positiong by a qyaternion rotatest the positon
- 
+        if ((!Input.GetKey(KeyCode.D)) || (!Input.GetKey(KeyCode.A)))
+        {
             transform.position = Vector3.Lerp(transform.position, pcObj.transform.position + rotation * dir, 16f * Time.deltaTime);
             transform.LookAt(pcObj.transform.position);
-
-        
-
+        }
 
 
 
@@ -52,6 +52,6 @@ public class CameraController : MonoBehaviour {
 
     }
 }
-//        if ((Input.GetKey(KeyCode.D))|| (Input.GetKey(KeyCode.A)))
+//        
         
 
