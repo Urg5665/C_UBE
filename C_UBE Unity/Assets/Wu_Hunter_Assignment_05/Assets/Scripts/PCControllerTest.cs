@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PCControllerTest : MonoBehaviour {
     private Rigidbody pcRigidbody;
-    private Rigidbody cameraRigidbody;
+
 
     private GameObject pcCamera;
 	private GameObject currentGround;
@@ -19,17 +19,21 @@ public class PCControllerTest : MonoBehaviour {
     [SerializeField]
     private float airMaxAccel = 1f;
 	[SerializeField]
-	private float walkableAngle = 60; 
+	private float walkableAngle = 60;
+
 
     private Vector3 currentFacing;
     // Use this for initialization
     void Start () {
-		pcRigidbody = GetComponent<Rigidbody>();
+		
         pcCamera = Camera.main.gameObject;
+        pcRigidbody = GetComponent<Rigidbody>();
 
-        cameraRigidbody = pcCamera.GetComponent<Rigidbody>();
+
+
         
-	}
+
+    }
 
  
 	
@@ -44,33 +48,30 @@ public class PCControllerTest : MonoBehaviour {
 
         pcRigidbody.velocity = new Vector3(0, 0, 0);
 
+
+
         if (Input.GetKey(KeyCode.W))
         {
             pcRigidbody.velocity = facing * groundSpeed;
-            
         }
         
         if (Input.GetKey(KeyCode.S))
         {
-            pcRigidbody.velocity = -facing * groundSpeed;
-            
+           pcRigidbody.velocity = -facing * groundSpeed;
         }
-        
 
         if (Input.GetKey(KeyCode.D))
         {
-            cameraRigidbody.velocity = rightfacing * groundSpeed;
             pcRigidbody.velocity = rightfacing * groundSpeed;
-            
+
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            cameraRigidbody.velocity = -rightfacing * groundSpeed;
-            pcRigidbody.velocity  = -rightfacing * groundSpeed;
-            
-
+            pcRigidbody.velocity = -rightfacing * groundSpeed;
         }
+
+
 
 
 

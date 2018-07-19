@@ -650,8 +650,8 @@ GameObject:
   m_Component:
   - component: {fileID: 570052710}
   - component: {fileID: 570052709}
-  - component: {fileID: 570052708}
   - component: {fileID: 570052711}
+  - component: {fileID: 570052708}
   m_Layer: 0
   m_Name: CameraTarget
   m_TagString: Untagged
@@ -693,12 +693,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 570052707}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 10, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!54 &570052711
 Rigidbody:
@@ -1458,7 +1458,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1104572337
 GameObject:
@@ -1473,6 +1473,7 @@ GameObject:
   - component: {fileID: 1104572339}
   - component: {fileID: 1104572338}
   - component: {fileID: 1104572343}
+  - component: {fileID: 1104572344}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1554,7 +1555,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1104572337}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 10, z: 0.55}
+  m_LocalPosition: {x: 0, y: 10, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1575,6 +1576,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!114 &1104572344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1104572337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1bc8d722551d74baa1b412c06ae296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundSpeed: 15
+  jumpForce: 7
+  airMaxSpeed: 6
+  airMaxAccel: 1
+  walkableAngle: 60
 --- !u!1 &1126090475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,7 +1741,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -42.791, y: 126.19101, z: 66.242004}
 --- !u!1 &1136724380
 GameObject:
@@ -2419,7 +2436,7 @@ Transform:
   m_LocalScale: {x: 5.962464, y: 3.2741, z: 3.2741}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1737342729
 GameObject:
