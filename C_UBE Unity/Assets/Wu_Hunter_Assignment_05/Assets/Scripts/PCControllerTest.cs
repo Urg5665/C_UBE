@@ -48,28 +48,52 @@ public class PCControllerTest : MonoBehaviour {
 
         pcRigidbody.velocity = new Vector3(0, 0, 0);
 
+        /*
+         *     
 
 
-        if (Input.GetKey(KeyCode.W))
+         */
+
+        if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.A)))
+        {
+            pcRigidbody.velocity = (facing + -rightfacing) * groundSpeed;
+        }
+        else if ((Input.GetKey(KeyCode.S)) && (Input.GetKey(KeyCode.A)))
+        {
+            pcRigidbody.velocity = (-facing + -rightfacing) * groundSpeed;
+        }
+        else if ((Input.GetKey(KeyCode.S)) && (Input.GetKey(KeyCode.D)))
+        {
+            pcRigidbody.velocity = (-facing + rightfacing) * groundSpeed;
+        }
+        else if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.D)))
+        {
+            pcRigidbody.velocity = (facing + rightfacing) * groundSpeed;
+        }
+
+        else if (Input.GetKey(KeyCode.W))
         {
             pcRigidbody.velocity = facing * groundSpeed;
+
         }
-        
-        if (Input.GetKey(KeyCode.S))
+
+        else if (Input.GetKey(KeyCode.S))
         {
            pcRigidbody.velocity = -facing * groundSpeed;
         }
 
-        if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D))
         {
             pcRigidbody.velocity = rightfacing * groundSpeed;
 
         }
-
-        if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A))
         {
             pcRigidbody.velocity = -rightfacing * groundSpeed;
         }
+
+
+
 
 
 
