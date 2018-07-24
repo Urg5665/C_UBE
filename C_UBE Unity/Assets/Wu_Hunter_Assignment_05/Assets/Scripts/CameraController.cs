@@ -42,7 +42,7 @@ public class CameraController : MonoBehaviour {
         //multiplying a positiong by a quaternion rotatest the positon
 
 
-        transform.position = Vector3.Lerp(transform.position,pcObj.transform.position + rotation * dir, 4f * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position,pcObj.transform.position + rotation * dir, 16f * Time.deltaTime);
         transform.LookAt(pcObj.transform.position);
         
 
