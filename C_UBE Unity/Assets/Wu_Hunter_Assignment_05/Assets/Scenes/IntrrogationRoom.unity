@@ -670,7 +670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1bc8d722551d74baa1b412c06ae296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundSpeed: 15
+  groundSpeed: 20
   jumpForce: 7
   airMaxSpeed: 6
   airMaxAccel: 1
@@ -1587,7 +1587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1bc8d722551d74baa1b412c06ae296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundSpeed: 15
+  groundSpeed: 20
   jumpForce: 7
   airMaxSpeed: 6
   airMaxAccel: 1
