@@ -9,6 +9,8 @@ public class PCControllerTest : MonoBehaviour {
     private GameObject pcCamera;
 	private GameObject currentGround;
 
+    public AudioSource audioS;
+
 
     [SerializeField]
     private float groundSpeed = 15f; //7f is a default but overwriteable value
@@ -35,10 +37,13 @@ public class PCControllerTest : MonoBehaviour {
 
     }
 
- 
-	
-	// Update is called once per frame
-	void LateUpdate () {
+    private void Update()
+    {
+        PlayFootsteps();
+    }
+
+    // Update is called once per frame
+    void LateUpdate () {
         Vector3 facing = pcCamera.transform.forward;
         Vector3 rightfacing = pcCamera.transform.right;
 
@@ -85,7 +90,6 @@ public class PCControllerTest : MonoBehaviour {
         else if (Input.GetKey(KeyCode.D))
         {
             pcRigidbody.velocity = rightfacing * groundSpeed;
-
         }
         else if (Input.GetKey(KeyCode.A))
         {
@@ -170,25 +174,25 @@ public class PCControllerTest : MonoBehaviour {
     }
 
 
-   /* private Vector3 AirVelocityAccelerate(Rigidbody acceleratingBody, float maxAccel, float maxSpeed)
-    {
+    /* private Vector3 AirVelocityAccelerate(Rigidbody acceleratingBody, float maxAccel, float maxSpeed)
+     {
 
-        Vector3 calcVelocity;
-        Vector3 dir = acceleratingBody.velocity;
-        //cancle out Y velocity
-        dir.y = 0;
-        float Mag = dir.magnitude;
-        dir = Vector3.Normalize(dir);
+         Vector3 calcVelocity;
+         Vector3 dir = acceleratingBody.velocity;
+         //cancle out Y velocity
+         dir.y = 0;
+         float Mag = dir.magnitude;
+         dir = Vector3.Normalize(dir);
 
-        //base next tick of acceleration on current momentum
-        float currentAccel = maxAccel * (Mag / (maxSpeed + .11f));
-        Mag += currentAccel;
-        calcVelocity = transform.forward * Mathf.Min(Mag, maxSpeed) + new Vector3(0, acceleratingBody.velocity.y, 0);
+         //base next tick of acceleration on current momentum
+         float currentAccel = maxAccel * (Mag / (maxSpeed + .11f));
+         Mag += currentAccel;
+         calcVelocity = transform.forward * Mathf.Min(Mag, maxSpeed) + new Vector3(0, acceleratingBody.velocity.y, 0);
 
-        return calcVelocity;
-    } */
+         return calcVelocity;
+     } */
 
-	/*private void RotateDo()
+    /*private void RotateDo()
 	{
 		if (currentFacing != Vector3.zero) 
 		{
@@ -198,6 +202,19 @@ public class PCControllerTest : MonoBehaviour {
 		}
 	} */
 
+    private void PlayFootsteps()
+    {
 
+        if (!pcRigidbody.velocity.Equals(Vector3.zero))
+        {
+            audioS.enabled = true;
+            audioS.loop = true;
+        }
+        if (pcRigidbody.velocity.Equals(Vector3.zero))
+        {
+            audioS.enabled = false;
+            audioS.loop = false;
+        }
+    }
 
 }
