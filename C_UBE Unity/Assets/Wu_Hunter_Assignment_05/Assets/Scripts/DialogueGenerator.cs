@@ -8,14 +8,20 @@ public class DialogueGenerator : MonoBehaviour {
 
     public GameObject person;
 
-
+    public int score;
+    // 1 is calm
+    // 2 is inspire
+    // 3 is angry
+        
 
     // Use this for initialization
     void Start () {
-
+        
+        //person = GameObject.Find("James").GetComponent<CharGenerator>();
         //Debug.Log(person.agitated);
         //Debug.Log(person.confused);
         //Debug.Log(person.angry);
+
 
 
     }
@@ -24,10 +30,14 @@ public class DialogueGenerator : MonoBehaviour {
     void Update () {
 
 
+        if (person == GameObject.Find("James").GetComponent<CharGenerator>())
+        {
 
-
-
+        }
         
+
+
+
 
 
 
