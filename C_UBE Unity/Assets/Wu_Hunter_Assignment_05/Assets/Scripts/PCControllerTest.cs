@@ -9,6 +9,8 @@ public class PCControllerTest : MonoBehaviour {
     private GameObject pcCamera;
 	private GameObject currentGround;
 
+    private GameObject audioSource;
+
     public AudioSource audioS;
 
 
@@ -29,12 +31,11 @@ public class PCControllerTest : MonoBehaviour {
     void Start () {
 		
         pcCamera = Camera.main.gameObject;
-        pcRigidbody = GetComponent<Rigidbody>();
+        pcRigidbody = GetComponent<Rigidbody>(); 
 
 
 
-        
-
+      
     }
 
     private void Update()
@@ -53,11 +54,6 @@ public class PCControllerTest : MonoBehaviour {
 
         pcRigidbody.velocity = new Vector3(0, 0, 0);
 
-        /*
-         *     
-
-
-         */
 
         if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.A)))
         {
@@ -79,7 +75,6 @@ public class PCControllerTest : MonoBehaviour {
         else if (Input.GetKey(KeyCode.W))
         {
             pcRigidbody.velocity = facing * groundSpeed;
-
         }
 
         else if (Input.GetKey(KeyCode.S))
@@ -96,23 +91,9 @@ public class PCControllerTest : MonoBehaviour {
             pcRigidbody.velocity = -rightfacing * groundSpeed;
         }
 
-
-
-
-
-
-
-
-
         //ground functions
         if (currentGround != null)
                 {
-
-
-                   /* if ((Input.GetKey(KeyCode.W)) || (Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.D)))
-                    {
-                        pcRigidbody.velocity = transform.forward * groundSpeed + new Vector3(0, pcRigidbody.velocity.y, 0);
-                    } */
 
                     if ((Input.GetKey(KeyCode.Space)))
                     {
@@ -121,17 +102,7 @@ public class PCControllerTest : MonoBehaviour {
 
                     //RotateDo ();
                 } 
-        /*  else //if not grounded
-          {
 
-              if ((Input.GetKey(KeyCode.W)) || (Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.D)))
-              {
-                  pcRigidbody.velocity = AirVelocityAccelerate(pcRigidbody, airMaxAccel, airMaxSpeed);
-              }
-
-              RotateDo ();
-
-          }*/
 
     }
 
@@ -174,34 +145,6 @@ public class PCControllerTest : MonoBehaviour {
     }
 
 
-    /* private Vector3 AirVelocityAccelerate(Rigidbody acceleratingBody, float maxAccel, float maxSpeed)
-     {
-
-         Vector3 calcVelocity;
-         Vector3 dir = acceleratingBody.velocity;
-         //cancle out Y velocity
-         dir.y = 0;
-         float Mag = dir.magnitude;
-         dir = Vector3.Normalize(dir);
-
-         //base next tick of acceleration on current momentum
-         float currentAccel = maxAccel * (Mag / (maxSpeed + .11f));
-         Mag += currentAccel;
-         calcVelocity = transform.forward * Mathf.Min(Mag, maxSpeed) + new Vector3(0, acceleratingBody.velocity.y, 0);
-
-         return calcVelocity;
-     } */
-
-    /*private void RotateDo()
-	{
-		if (currentFacing != Vector3.zero) 
-		{
-			pcRigidbody.MoveRotation(Quaternion.RotateTowards
-				(transform.rotation, Quaternion.LookRotation(currentFacing.normalized), 1000f * Time.deltaTime));
-			currentFacing = Vector3.zero;
-		}
-	} */
-
     private void PlayFootsteps()
     {
 
@@ -218,3 +161,50 @@ public class PCControllerTest : MonoBehaviour {
     }
 
 }
+
+
+
+
+/* private Vector3 AirVelocityAccelerate(Rigidbody acceleratingBody, float maxAccel, float maxSpeed)
+ {
+
+     Vector3 calcVelocity;
+     Vector3 dir = acceleratingBody.velocity;
+     //cancle out Y velocity
+     dir.y = 0;
+     float Mag = dir.magnitude;
+     dir = Vector3.Normalize(dir);
+
+     //base next tick of acceleration on current momentum
+     float currentAccel = maxAccel * (Mag / (maxSpeed + .11f));
+     Mag += currentAccel;
+     calcVelocity = transform.forward * Mathf.Min(Mag, maxSpeed) + new Vector3(0, acceleratingBody.velocity.y, 0);
+
+     return calcVelocity;
+ } */
+
+/*private void RotateDo()
+{
+    if (currentFacing != Vector3.zero) 
+    {
+        pcRigidbody.MoveRotation(Quaternion.RotateTowards
+            (transform.rotation, Quaternion.LookRotation(currentFacing.normalized), 1000f * Time.deltaTime));
+        currentFacing = Vector3.zero;
+    }
+} */
+/*  else //if not grounded
+  {
+
+      if ((Input.GetKey(KeyCode.W)) || (Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.D)))
+      {
+          pcRigidbody.velocity = AirVelocityAccelerate(pcRigidbody, airMaxAccel, airMaxSpeed);
+      }
+
+      RotateDo ();
+
+  }*/
+
+/* if ((Input.GetKey(KeyCode.W)) || (Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.D)))
+ {
+     pcRigidbody.velocity = transform.forward * groundSpeed + new Vector3(0, pcRigidbody.velocity.y, 0);
+ } */

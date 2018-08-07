@@ -30,10 +30,10 @@ public class DialogueGenerator : MonoBehaviour {
     void Update () {
 
 
-        if (person == GameObject.Find("James").GetComponent<CharGenerator>())
-        {
+        //if (person == GameObject.Find("James").GetComponent<CharGenerator>())
+        //{
 
-        }
+        //}
         
 
 
