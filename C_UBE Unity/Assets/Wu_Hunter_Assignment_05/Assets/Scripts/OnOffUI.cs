@@ -10,6 +10,8 @@ public class OnOffUI : MonoBehaviour {
 
     public bool isOn;
 
+    
+
 	// Use this for initialization
 	void Start () {
 
