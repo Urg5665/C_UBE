@@ -4776,6 +4776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pcObj: {fileID: 570052707}
   camDistance: 2
+  check: {fileID: 0}
 --- !u!81 &1104572339
 AudioListener:
   m_ObjectHideFlags: 0

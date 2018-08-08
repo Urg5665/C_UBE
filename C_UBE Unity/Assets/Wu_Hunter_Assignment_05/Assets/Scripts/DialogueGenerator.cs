@@ -100,6 +100,7 @@ public class DialogueGenerator : MonoBehaviour {
         {
             personWords.text = "Phew, I was kind of scared but that wasn’t that bad. See you.";
             correct = true;
+
         }
 
     }
@@ -133,6 +134,7 @@ public class DialogueGenerator : MonoBehaviour {
         {
             personWords.text = "Thanks, you have a nice day!";
             correct = true;
+      
         }
     }
     void pressureClick0()
@@ -163,6 +165,7 @@ public class DialogueGenerator : MonoBehaviour {
         {
             personWords.text = "Wait ... There’s no way I’m leaving the planet now.";
             correct = true;
+     
         }
     }
 
@@ -177,6 +180,12 @@ public class DialogueGenerator : MonoBehaviour {
             {
                 phase += 0.5f ;
                 correct = false;
+                if (phase == 0)
+                {
+                    personWords.text = "Is this my briefing room? (Press E for options)";
+                    correct = true;
+                }
+
                 if (phase == .5)
                 {
                     personWords.text = " There are many prerequisites that I don’t meet to be C_UBE volunteer personnel. Why was I picked?";
@@ -189,12 +198,13 @@ public class DialogueGenerator : MonoBehaviour {
                 }
                 if (phase == 2.5)
                 {
-                    personWords.text = "Alright, that was a strong debriefing. I belive my application is strong. ";
+                    personWords.text = "Alright, that was a strong debriefing. Any last thoughts on my application? ";
                     correct = true;
                 }
                 if (phase == 3.5)
                 {
-                    personWords.text = " ";
+                    personWords.text += " ";
+                    phase = 0;
                 }
 
 
