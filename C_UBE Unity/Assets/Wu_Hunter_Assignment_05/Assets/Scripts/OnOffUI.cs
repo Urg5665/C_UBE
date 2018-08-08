@@ -28,11 +28,11 @@ public class OnOffUI : MonoBehaviour {
 
         
 
-        if ((Input.GetKeyDown(KeyCode.E)) && !isOn) {
+        if ((Input.GetKeyDown(KeyCode.E)|| (Input.GetKeyDown(KeyCode.Q)) && !isOn)) {
             dUI.enabled = true;
             isOn = true;  
         }
-        else if ((Input.GetKeyDown(KeyCode.E)) && isOn)
+        else if ((Input.GetKeyDown(KeyCode.E)|| (Input.GetKeyDown(KeyCode.Q)) && isOn))
         {
             dUI.enabled = false;
             isOn = false;
