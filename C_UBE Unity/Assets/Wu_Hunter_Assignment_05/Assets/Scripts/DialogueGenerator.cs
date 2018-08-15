@@ -8,20 +8,23 @@ public class DialogueGenerator : MonoBehaviour {
     //    // Mark S  7_27
     // takes in characeter and runs through dialogue options
 
-    //public GameObject person;
+    public GameObject personWords;
 
+    //public Component personWordsText;
     //public int score;
 
 
-    public bool agitated; //  Calm
-    public bool confused; // Inspire
-    public bool angry; // Pressure
+    public float agitated; //  Calm
+    public float confused; // Inspire
+    public float angry; // Pressure
 
     public Button calm;
     public Button inspire;
     public Button pressure;
 
-    public Text personWords;
+    //public Text personWords;
+
+
 
     public float phase;
     public bool correct;
@@ -42,14 +45,19 @@ public class DialogueGenerator : MonoBehaviour {
 
 
 
-        personWords = GameObject.Find("personWords").GetComponent<Text>();
+        personWords = GameObject.Find("personWords");
 
-        agitated = true;
-        angry = true;
-        confused = false;
+        //personWordsText = personWords.
+
+        agitated = 2;
+        confused = 1;
+        angry = 0;
+
 
         phase = 0;
         correct = false;
+
+
 
         calm.onClick.AddListener(calmClick0);
         calm.onClick.AddListener(calmClick1);
@@ -72,7 +80,8 @@ public class DialogueGenerator : MonoBehaviour {
     {
         if (phase == 0)
         {
-            personWords.text = "Uh ... sounds good. Let’s begin? (E) ";
+            personWords.GetComponent<TextMesh>().text = "Uh ... sounds good. Let’s begin? (E) ";
+            
             correct = true;
         }
 
@@ -81,8 +90,9 @@ public class DialogueGenerator : MonoBehaviour {
     {
         if (phase == 1)
         {
-            personWords.text = "You’re sure about that? If you say so, I guess.(E)";
+            personWords.GetComponent<TextMesh>().text = "You’re sure about that? If you say so, I guess.(E)";
             correct = true;
+            agitated -= 1;
         }
 
     }
@@ -90,7 +100,8 @@ public class DialogueGenerator : MonoBehaviour {
     {
         if (phase == 2)
         {
-            personWords.text = "I’m kind of still in the dark ... ";           
+            personWords.GetComponent<TextMesh>().text = "I’m kind of still in the dark ... ";
+            correct = true;
         }
 
     }
@@ -98,8 +109,9 @@ public class DialogueGenerator : MonoBehaviour {
     {
         if (phase == 3)
         {
-            personWords.text = "Phew, I was kind of scared but that wasn’t that bad. See you.";
+            personWords.GetComponent<TextMesh>().text = "Phew, I was kind of scared but that wasn’t that bad. See you.";
             correct = true;
+            agitated -= 1;
 
         }
 
@@ -108,7 +120,7 @@ public class DialogueGenerator : MonoBehaviour {
     {
         if (phase == 0)
         {
-            personWords.text = "Great. Let’s begin then.(E)";
+            personWords.GetComponent<TextMesh>().text = "Great. Let’s begin then.(E)";
             correct = true;
         }
     }
@@ -116,23 +128,25 @@ public class DialogueGenerator : MonoBehaviour {
     {
         if (phase == 1)
         {
-            personWords.text = "Interesting. How can I be of use?.";
-            
+            personWords.GetComponent<TextMesh>().text = "Okay, I’m confused. You aren’t being reasonable here.";
+            correct = true;
+
         }
     }
     void inspireClick2()
     {
         if (phase == 2)
         {
-            personWords.text = "Okay, it sounds like everyone should be allowed to try it at least once.(E)";
+            personWords.GetComponent<TextMesh>().text = "Okay, it sounds like everyone should be allowed to try it at least once.(E)";
             correct = true;
+            confused -= 1;
         }
     }
     void inspireClick3()
     {
         if (phase == 3)
         {
-            personWords.text = "Thanks, you have a nice day!";
+            personWords.GetComponent<TextMesh>().text = "Thanks, you have a nice day!";
             correct = true;
       
         }
@@ -141,7 +155,7 @@ public class DialogueGenerator : MonoBehaviour {
     {
         if (phase == 0)
         {
-            personWords.text = "Jeez... Alright.(E)";
+            personWords.GetComponent<TextMesh>().text = "Jeez... Alright.(E)";
             correct = true;
         }
     }
@@ -149,21 +163,23 @@ public class DialogueGenerator : MonoBehaviour {
     {
         if (phase == 1)
         {
-            personWords.text = "Okay, I’m confused. You aren’t being reasonable here.";            
+            personWords.GetComponent<TextMesh>().text = "Please, You are coming on way too strong.";
+            correct = true;
         }
     }
     void pressureClick2()
     {
         if (phase == 2)
         {
-            personWords.text = "I’m not sure I want to do this.";
+            personWords.GetComponent<TextMesh>().text = "Look, I’m not sure I want to do this.";
+            correct = true;
         }
     }
     void pressureClick3()
     {
         if (phase == 3)
         {
-            personWords.text = "Wait ... There’s no way I’m leaving the planet now.";
+            personWords.GetComponent<TextMesh>().text = "Wait ... There’s no way I’m leaving the planet now.";
             correct = true;
      
         }
@@ -174,40 +190,27 @@ public class DialogueGenerator : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate() {
 
+        Debug.Log(agitated);
+        Debug.Log(angry);
+        Debug.Log(confused);
+
+
+
+
         if (correct)
         {
-               if (Input.GetKey(KeyCode.E))
+            if (agitated == 0 && angry == 0 && confused == 0)
             {
-                phase += 0.5f ;
+                if (phase == 3)
+                {
+                    personWords.GetComponent<TextMesh>().text = "Alright, that was a strong debriefing. Any last thoughts on my application? ";
+                    correct = true;
+                }
+            }
+            if (Input.GetKey(KeyCode.E))
+            {
+                phase += 1f ;
                 correct = false;
-                if (phase == 0)
-                {
-                    personWords.text = "Is this my briefing room? (Press E for options)";
-                    correct = true;
-                }
-
-                if (phase == .5)
-                {
-                    personWords.text = " There are many prerequisites that I don’t meet to be C_UBE volunteer personnel. Why was I picked?";
-                    correct = true;
-                }
-                if (phase == 1.5)
-                {
-                    personWords.text = "Nobody knows anything about the C_UBE and nobody has returned to talk about it. What am I supposed to expect?";
-                    correct = true;
-                }
-                if (phase == 2.5)
-                {
-                    personWords.text = "Alright, that was a strong debriefing. Any last thoughts on my application? ";
-                    correct = true;
-                }
-                if (phase == 3.5)
-                {
-                    personWords.text += " ";
-                    phase = 0;
-                }
-
-
             }
 
         }
@@ -222,6 +225,29 @@ public class DialogueGenerator : MonoBehaviour {
     }
 
 /*
+ *                 if (phase == 0)
+                {
+                    personWords.GetComponent<TextMesh>().text = "Is this my briefing room? (Press E for options)";
+                    correct = true;
+                }
+
+                if (phase == .5)
+                {
+                    personWords.GetComponent<TextMesh>().text = " There are many prerequisites that I don’t meet " +
+                        " to be C_UBE volunteer personnel. Why was I picked?";
+                    correct = true;
+                }
+                if (phase == 1.5)
+                {
+                    personWords.GetComponent<TextMesh>().text = "Nobody knows anything about the C_UBE and nobody has returned to talk about it. What am I supposed to expect?";
+                    correct = true;
+                }
+                if (phase == 2.5)
+                {
+                    //personWords.GetComponent<TextMesh>().text = "Alright, that was a strong debriefing. Any last thoughts on my application? ";
+                    correct = true;
+                }
+
  *       
 
  */
