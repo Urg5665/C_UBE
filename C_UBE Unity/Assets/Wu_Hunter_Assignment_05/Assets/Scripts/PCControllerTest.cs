@@ -32,6 +32,7 @@ public class PCControllerTest : MonoBehaviour {
 		
         pcCamera = Camera.main.gameObject;
         pcRigidbody = GetComponent<Rigidbody>(); 
+       
 
 
 
