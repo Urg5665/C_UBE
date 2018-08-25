@@ -4851,8 +4851,8 @@ MonoBehaviour:
   pcObj: {fileID: 570052707}
   camDistance: 2
   fpsCam: {fileID: 0}
-  cameraOrigin: {fileID: 0}
-  laserLine: {fileID: 0}
+  targetDistance: 0
+  cameraOrigin: {x: 0, y: 0, z: 0}
   check: {fileID: 0}
 --- !u!81 &1104572339
 AudioListener:

@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 // Mark S 8_24
 public class CameraController : MonoBehaviour {
-    private GameObject cameraObject;
+
+    private GameObject cameraTarget;
+
+   
 
     [SerializeField]
     private GameObject pcObj;
@@ -15,9 +18,11 @@ public class CameraController : MonoBehaviour {
 
     public Camera fpsCam;
 
-    public Transform cameraOrigin;
+    public float targetDistance;
 
-    public LineRenderer laserLine;
+    public Vector3 cameraOrigin;
+
+    //public LineRenderer laserLine;
 
     public OnOffUI check;
 
@@ -26,11 +31,11 @@ public class CameraController : MonoBehaviour {
         //Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
 
-        laserLine = GetComponentInChildren<LineRenderer>();
+        //laserLine = GetComponentInChildren<LineRenderer>();
 
         fpsCam = GetComponent<Camera>();
 
-        RaycastHit hit;
+        
         Ray ray = fpsCam.ScreenPointToRay(Input.mousePosition);
 
 
@@ -42,13 +47,19 @@ public class CameraController : MonoBehaviour {
 
         check = GameObject.Find("Canvas").GetComponent<OnOffUI>();
 
-        cameraOrigin = this.transform;
+        cameraOrigin = this.transform.position;
+            
+            //new Vector3(this.transform.position.x, this.transform.position.y+ 10, this.transform.position.z);
     }
 
 
     private void FixedUpdate() {
 
-       if (!check.isOn){
+       
+
+        RaycastHit hit;
+
+        if (!check.isOn){
             Vector3 dir = new Vector3(0, 0, camDistance);
             Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
 
@@ -56,23 +67,37 @@ public class CameraController : MonoBehaviour {
             transform.position = Vector3.Lerp(transform.position, pcObj.transform.position + rotation * dir, 16f * Time.deltaTime);
             transform.LookAt(pcObj.transform.position);
 
-            
-
-
-            laserLine.enabled = true;
 
 
 
-             
-         
+            //laserLine.enabled = true;
 
+
+            Debug.DrawRay(cameraOrigin, fpsCam.transform.forward, Color.green);
+
+            if (Physics.Raycast(cameraOrigin , fpsCam.transform.forward, out hit))
+            {
+                targetDistance = hit.distance;
+                Debug.Log(hit.distance);
+            }
+            else
+            {
+                Debug.Log("Hit False");
+            }
 
         }
 
 
+
+
+
+
+    }
+
+
     }
     
-}
+
 /*
  * 
 
