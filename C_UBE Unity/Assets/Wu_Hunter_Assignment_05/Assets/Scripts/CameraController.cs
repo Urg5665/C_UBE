@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 // Mark S 8_24
 public class CameraController : MonoBehaviour {
 
@@ -23,23 +25,27 @@ public class CameraController : MonoBehaviour {
 
     public Vector3 cameraOrigin;
 
+    public GameObject sysText;
+
+
     //public LineRenderer laserLine;
 
     public OnOffUI check;
 
     void Start () {
       
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
 
         //laserLine = GetComponentInChildren<LineRenderer>();
 
         fpsCam = GetComponent<Camera>();
 
-        
+        sysText = GameObject.Find("sysText");
+
         Ray ray = fpsCam.ScreenPointToRay(Input.mousePosition);
 
-
+        //selectionOutline = new Material(Material );
     }
     private void Update ()
     {
@@ -52,7 +58,7 @@ public class CameraController : MonoBehaviour {
 
         cameraOrigin = this.transform.position;
             
-            //new Vector3(this.transform.position.x, this.transform.position.y+ 10, this.transform.position.z);
+
     }
 
 
@@ -60,7 +66,7 @@ public class CameraController : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.Q))
         {
-            
+            Cursor.lockState = CursorLockMode.None;
             transform.LookAt(character.transform.position);
         }
 
@@ -70,35 +76,46 @@ public class CameraController : MonoBehaviour {
             Vector3 dir = new Vector3(0, 0, camDistance);
             Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
 
+            Cursor.lockState = CursorLockMode.Locked;
+
 
 
 
             transform.position = Vector3.Lerp(transform.position, pcObj.transform.position + rotation * dir, 16f * Time.deltaTime);
             transform.LookAt(pcObj.transform.position);
 
-
-
-
-
-            //laserLine.enabled = true;
-
-
-            Debug.DrawRay(cameraOrigin, fpsCam.transform.forward, Color.green);
+            //Debug.DrawRay(cameraOrigin, fpsCam.transform.forward, Color.green);
 
             if (Physics.Raycast(cameraOrigin, fpsCam.transform.forward, out hit))
             {
                 targetDistance = hit.distance;
 
                 Transform targetTransform = hit.transform;
-                Debug.Log(hit.transform);
+                //Debug.Log(targetTransform);
+
+                
 
                 GameObject targetObject = targetTransform.gameObject;
+                
+                sysText.GetComponent<Text>().text = targetObject.name;
 
-                targetObject.SetActive(false);
+
+                //Renderer rend = targetObject.GetComponent<MeshRenderer>();
+
+                //targetObject.SetActive(false);
+                //Material oldMat = targetObject.GetComponent<Material>();
+
+                //targetObject.GetComponent<Material>().color = Color.white;
+
+
+
+
+
+
             }
             else
             {
-                Debug.Log("False");
+                sysText.GetComponent<Text>().text =  " ";
             }
 
 
