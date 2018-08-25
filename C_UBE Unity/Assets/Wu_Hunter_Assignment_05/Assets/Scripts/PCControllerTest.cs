@@ -14,19 +14,22 @@ public class PCControllerTest : MonoBehaviour {
     public AudioSource audioS;
 
 
-    [SerializeField]
+
     private float groundSpeed = 15f; //7f is a default but overwriteable value
-    [SerializeField]
-    private float jumpForce = 7f;
-    [SerializeField]
-    private float airMaxSpeed = 6f;
-    [SerializeField]
-    private float airMaxAccel = 1f;
-	[SerializeField]
-	private float walkableAngle = 60;
+
+    //private float jumpForce = 7f;
+
+    //private float airMaxSpeed = 6f;
+
+    //private float airMaxAccel = 1f;
+
+	//private float walkableAngle = 60;
 
 
     private Vector3 currentFacing;
+
+    public OnOffUI check;
+
     // Use this for initialization
     void Start () {
 		
@@ -41,11 +44,15 @@ public class PCControllerTest : MonoBehaviour {
 
     private void Update()
     {
-        PlayFootsteps();
+        //PlayFootsteps();
+
+        check = GameObject.Find("Canvas").GetComponent<OnOffUI>();
     }
 
     // Update is called once per frame
     void LateUpdate () {
+
+
         Vector3 facing = pcCamera.transform.forward;
         Vector3 rightfacing = pcCamera.transform.right;
 
@@ -55,65 +62,101 @@ public class PCControllerTest : MonoBehaviour {
 
         pcRigidbody.velocity = new Vector3(0, 0, 0);
 
-
         if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.A)))
         {
             pcRigidbody.velocity = (facing + -rightfacing) * groundSpeed;
+            if (check.isOn)
+            {
+                pcRigidbody.velocity = new Vector3(0, 0, 0);
+            }
         }
         else if ((Input.GetKey(KeyCode.S)) && (Input.GetKey(KeyCode.A)))
         {
             pcRigidbody.velocity = (-facing + -rightfacing) * groundSpeed;
+            if (check.isOn)
+            {
+                pcRigidbody.velocity = new Vector3(0, 0, 0);
+            }
         }
         else if ((Input.GetKey(KeyCode.S)) && (Input.GetKey(KeyCode.D)))
         {
             pcRigidbody.velocity = (-facing + rightfacing) * groundSpeed;
+            if (check.isOn)
+            {
+                pcRigidbody.velocity = new Vector3(0, 0, 0);
+            }
         }
         else if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.D)))
         {
             pcRigidbody.velocity = (facing + rightfacing) * groundSpeed;
+            if (check.isOn)
+            {
+                pcRigidbody.velocity = new Vector3(0, 0, 0);
+            }
         }
 
         else if (Input.GetKey(KeyCode.W))
         {
             pcRigidbody.velocity = facing * groundSpeed;
+            if (check.isOn)
+            {
+                pcRigidbody.velocity = new Vector3(0, 0, 0);
+            }
         }
 
         else if (Input.GetKey(KeyCode.S))
         {
            pcRigidbody.velocity = -facing * groundSpeed;
+            if (check.isOn)
+            {
+                pcRigidbody.velocity = new Vector3(0, 0, 0);
+            }
         }
 
         else if (Input.GetKey(KeyCode.D))
         {
             pcRigidbody.velocity = rightfacing * groundSpeed;
+            if (check.isOn)
+            {
+                pcRigidbody.velocity = new Vector3(0, 0, 0);
+            }
         }
         else if (Input.GetKey(KeyCode.A))
         {
             pcRigidbody.velocity = -rightfacing * groundSpeed;
+            if (check.isOn)
+            {
+                pcRigidbody.velocity = new Vector3(0, 0, 0);
+            }
         }
-
-        //ground functions
-        if (currentGround != null)
-                {
-
-                    if ((Input.GetKey(KeyCode.Space)))
-                    {
-                        pcRigidbody.velocity = new Vector3(pcRigidbody.velocity.x, jumpForce, pcRigidbody.velocity.z);
-                    }
-
-                    //RotateDo ();
-                } 
-
-
     }
 
-    private bool IsGrounded()
-    {                                                       //our raycast will touch ground regardless of scale
-        return Physics.Raycast(transform.position, Vector3.down, transform.localScale.y+.1f);
-        jumpForce = 7f;
+
+
+
+
+
+    private void PlayFootsteps()
+    {
+
+        if (!pcRigidbody.velocity.Equals(Vector3.zero))
+        {
+            audioS.enabled = true;
+            audioS.loop = true;
+        }
+        if (pcRigidbody.velocity.Equals(Vector3.zero))
+        {
+            audioS.enabled = false;
+            audioS.loop = false;
+        }
     }
 
-    private void OnCollisionEnter (Collision hit)
+}
+
+
+
+
+/*    private void OnCollisionEnter (Collision hit)
     {
         //Debug.Log(hit.collider.name);
     }
@@ -144,29 +187,12 @@ public class PCControllerTest : MonoBehaviour {
 			currentGround = null; 
 		}
     }
-
-
-    private void PlayFootsteps()
-    {
-
-        if (!pcRigidbody.velocity.Equals(Vector3.zero))
-        {
-            audioS.enabled = true;
-            audioS.loop = true;
-        }
-        if (pcRigidbody.velocity.Equals(Vector3.zero))
-        {
-            audioS.enabled = false;
-            audioS.loop = false;
-        }
-    }
-
-}
-
-
-
-
-/* private Vector3 AirVelocityAccelerate(Rigidbody acceleratingBody, float maxAccel, float maxSpeed)
+ *
+ * 
+ * 
+ * 
+ * 
+ * private Vector3 AirVelocityAccelerate(Rigidbody acceleratingBody, float maxAccel, float maxSpeed)
  {
 
      Vector3 calcVelocity;
@@ -208,4 +234,14 @@ public class PCControllerTest : MonoBehaviour {
 /* if ((Input.GetKey(KeyCode.W)) || (Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.D)))
  {
      pcRigidbody.velocity = transform.forward * groundSpeed + new Vector3(0, pcRigidbody.velocity.y, 0);
- } */
+ } 
+ 
+         private bool IsGrounded()
+    {                                                       //our raycast will touch ground regardless of scale
+        return Physics.Raycast(transform.position, Vector3.down, transform.localScale.y+.1f);
+        jumpForce = 7f;
+    }
+     
+     
+     
+     */

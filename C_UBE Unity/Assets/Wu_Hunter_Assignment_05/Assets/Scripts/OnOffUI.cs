@@ -15,7 +15,6 @@ public class OnOffUI : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        //buttonImage = GetComponent<Image>();
 
         dUI = GetComponent<Canvas>();
 
@@ -26,13 +25,11 @@ public class OnOffUI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        
-
-        if ((Input.GetKeyDown(KeyCode.E)|| (Input.GetKeyDown(KeyCode.Q)) && !isOn)) {
+        if (((Input.GetKeyDown(KeyCode.Q)) && !isOn)) {
             dUI.enabled = true;
             isOn = true;  
         }
-        else if ((Input.GetKeyDown(KeyCode.E)|| (Input.GetKeyDown(KeyCode.Q)) && isOn))
+        else if (((Input.GetKeyDown(KeyCode.Q)) && isOn))
         {
             dUI.enabled = false;
             isOn = false;
@@ -40,17 +37,4 @@ public class OnOffUI : MonoBehaviour {
 
     }
 }
-/*
-         if ((Input.GetKeyDown(KeyCode.E))) {
-            isOn = true;  
-        }
-        if (isOn)
-        {
-            dUI.enabled = true;
-        }
-        else if (!isOn)
-        {
-            dUI.enabled = false;
 
-        }
-     */
