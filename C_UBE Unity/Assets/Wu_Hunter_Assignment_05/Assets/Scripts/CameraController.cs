@@ -107,6 +107,7 @@ public class CameraController : MonoBehaviour {
 
                 //targetObject.GetComponent<Material>().color = Color.white;
 
+                
 
 
 

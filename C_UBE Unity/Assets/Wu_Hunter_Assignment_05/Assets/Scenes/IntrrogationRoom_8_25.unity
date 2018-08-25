@@ -2652,6 +2652,7 @@ GameObject:
   - component: {fileID: 637715980}
   - component: {fileID: 637715982}
   - component: {fileID: 637715981}
+  - component: {fileID: 637715983}
   m_Layer: 0
   m_Name: Frame
   m_TagString: Untagged
@@ -2718,6 +2719,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 637715979}
   m_Mesh: {fileID: 4300034, guid: 0707af169b1f84043901986050ffc654, type: 3}
+--- !u!65 &637715983
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 637715979}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.015157672, y: 0.015258206, z: 0.01413006}
+  m_Center: {x: 0.00003589271, y: -0.000028442008, z: 0.000060813974}
 --- !u!1 &647211796
 GameObject:
   m_ObjectHideFlags: 0
@@ -3778,8 +3791,9 @@ GameObject:
   - component: {fileID: 858566661}
   - component: {fileID: 858566663}
   - component: {fileID: 858566662}
+  - component: {fileID: 858566664}
   m_Layer: 0
-  m_Name: Coffee_Mug
+  m_Name: Coffee Mug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3843,6 +3857,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 858566660}
   m_Mesh: {fileID: 4300032, guid: 0707af169b1f84043901986050ffc654, type: 3}
+--- !u!65 &858566664
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 858566660}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.049999945, z: 0.025113512}
+  m_Center: {x: -0.000000059604645, y: 0.02271099, z: -0.0025567405}
 --- !u!1 &862379210
 GameObject:
   m_ObjectHideFlags: 0
@@ -4894,6 +4920,7 @@ MonoBehaviour:
   fpsCam: {fileID: 0}
   targetDistance: 0
   cameraOrigin: {x: 0, y: 0, z: 0}
+  sysText: {fileID: 0}
   check: {fileID: 0}
 --- !u!81 &1104572339
 AudioListener:
@@ -5657,8 +5684,9 @@ GameObject:
   - component: {fileID: 1194144242}
   - component: {fileID: 1194144244}
   - component: {fileID: 1194144243}
+  - component: {fileID: 1194144245}
   m_Layer: 0
-  m_Name: Couch
+  m_Name: Back Couch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5722,6 +5750,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1194144241}
   m_Mesh: {fileID: 4300042, guid: 0707af169b1f84043901986050ffc654, type: 3}
+--- !u!65 &1194144245
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1194144241}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.23355348, y: 0.08609804, z: 0.09410187}
+  m_Center: {x: -0.00000000372529, y: -0.000098368146, z: -0.00006833113}
 --- !u!1 &1217575114
 GameObject:
   m_ObjectHideFlags: 0
@@ -7123,6 +7163,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1375803122610952, guid: 1e5425bf18419c84bbbe334428ce695b, type: 2}
+      propertyPath: m_Name
+      value: Front Couch
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e5425bf18419c84bbbe334428ce695b, type: 2}
   m_IsPrefabAsset: 0
@@ -7169,8 +7213,9 @@ GameObject:
   - component: {fileID: 1655164913}
   - component: {fileID: 1655164915}
   - component: {fileID: 1655164914}
+  - component: {fileID: 1655164916}
   m_Layer: 0
-  m_Name: Open_Book
+  m_Name: Open Book
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7235,6 +7280,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1655164912}
   m_Mesh: {fileID: 4300030, guid: 0707af169b1f84043901986050ffc654, type: 3}
+--- !u!65 &1655164916
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1655164912}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3373701, y: 0.48887017, z: 0.055295013}
+  m_Center: {x: 2.6092462e-11, y: -0.0017509761, z: 0.026387513}
 --- !u!1 &1682913431
 GameObject:
   m_ObjectHideFlags: 0
@@ -8479,7 +8536,7 @@ GameObject:
   - component: {fileID: 2095467185}
   - component: {fileID: 2095467184}
   m_Layer: 0
-  m_Name: Pencil_Cup
+  m_Name: Pencil Cup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8721,7 +8778,7 @@ GameObject:
   - component: {fileID: 2110861303}
   - component: {fileID: 2110861305}
   m_Layer: 0
-  m_Name: Char2
+  m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8785,8 +8842,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2110861301}
   m_Mesh: {fileID: 4300036, guid: 0707af169b1f84043901986050ffc654, type: 3}
---- !u!65 &2110861305
-BoxCollider:
+--- !u!64 &2110861305
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -8794,9 +8851,11 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.040000014, y: 3.3283575, z: 0.046552293}
-  m_Center: {x: 0.0000000037252903, y: 0.20289128, z: 0.0032761705}
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300036, guid: 0707af169b1f84043901986050ffc654, type: 3}
 --- !u!1 &2137525186
 GameObject:
   m_ObjectHideFlags: 0
@@ -8864,7 +8923,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ' Couch'
+  m_Text: '
+
+'
 --- !u!222 &2137525189
 CanvasRenderer:
   m_ObjectHideFlags: 0
