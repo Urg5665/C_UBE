@@ -73,7 +73,7 @@ public class CameraController : MonoBehaviour {
             //laserLine.enabled = true;
 
 
-            Debug.DrawRay(cameraOrigin, fpsCam.transform.forward, Color.green);
+            Debug.DrawRay(cameraOrigin, fpsCam.transform.forward, Color.green,targetDistance);
 
             if (Physics.Raycast(cameraOrigin , fpsCam.transform.forward, out hit))
             {
