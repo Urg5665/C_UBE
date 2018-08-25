@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour {
 
     private GameObject cameraTarget;
 
+    private GameObject character;
    
 
     [SerializeField]
@@ -47,6 +48,8 @@ public class CameraController : MonoBehaviour {
 
         check = GameObject.Find("Canvas").GetComponent<OnOffUI>();
 
+        character = GameObject.Find("CharacterPivot");
+
         cameraOrigin = this.transform.position;
             
             //new Vector3(this.transform.position.x, this.transform.position.y+ 10, this.transform.position.z);
@@ -55,7 +58,11 @@ public class CameraController : MonoBehaviour {
 
     private void FixedUpdate() {
 
-       
+        if (Input.GetKey(KeyCode.Q))
+        {
+            
+            transform.LookAt(character.transform.position);
+        }
 
         RaycastHit hit;
 
@@ -64,8 +71,11 @@ public class CameraController : MonoBehaviour {
             Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
 
 
+
+
             transform.position = Vector3.Lerp(transform.position, pcObj.transform.position + rotation * dir, 16f * Time.deltaTime);
             transform.LookAt(pcObj.transform.position);
+
 
 
 
@@ -73,17 +83,26 @@ public class CameraController : MonoBehaviour {
             //laserLine.enabled = true;
 
 
-            Debug.DrawRay(cameraOrigin, fpsCam.transform.forward, Color.green,targetDistance);
+            Debug.DrawRay(cameraOrigin, fpsCam.transform.forward, Color.green);
 
-            if (Physics.Raycast(cameraOrigin , fpsCam.transform.forward, out hit))
+            if (Physics.Raycast(cameraOrigin, fpsCam.transform.forward, out hit))
             {
                 targetDistance = hit.distance;
-                Debug.Log(hit.distance);
+
+                Transform targetTransform = hit.transform;
+                Debug.Log(hit.transform);
+
+                GameObject targetObject = targetTransform.gameObject;
+
+                targetObject.SetActive(false);
             }
             else
             {
-                Debug.Log("Hit False");
+                Debug.Log("False");
             }
+
+
+
 
         }
 
