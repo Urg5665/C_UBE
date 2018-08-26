@@ -107,7 +107,19 @@ public class CameraController : MonoBehaviour {
 
                 //targetObject.GetComponent<Material>().color = Color.white;
 
+                Animator targetAnimation = targetObject.GetComponent<Animator>();
+
                 
+                bool isOn = targetAnimation.enabled;
+
+                if (Input.GetKeyDown(KeyCode.E) && !isOn)
+                {
+                    targetAnimation.enabled = true;
+                }
+                else if (Input.GetKeyDown(KeyCode.E) && isOn)
+                {
+                    targetAnimation.enabled = false;
+                }
 
 
 
