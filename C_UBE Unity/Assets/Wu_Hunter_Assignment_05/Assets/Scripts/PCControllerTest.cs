@@ -34,9 +34,9 @@ public class PCControllerTest : MonoBehaviour {
     void Start () {
 		
         pcCamera = Camera.main.gameObject;
-        pcRigidbody = GetComponent<Rigidbody>(); 
-       
+        pcRigidbody = GetComponent<Rigidbody>();
 
+        
 
 
       
@@ -44,7 +44,7 @@ public class PCControllerTest : MonoBehaviour {
 
     private void Update()
     {
-        //PlayFootsteps();
+        PlayFootsteps();
 
         check = GameObject.Find("Canvas").GetComponent<OnOffUI>();
     }
