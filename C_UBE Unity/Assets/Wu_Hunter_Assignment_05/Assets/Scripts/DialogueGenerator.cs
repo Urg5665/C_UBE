@@ -9,9 +9,10 @@ public class DialogueGenerator : MonoBehaviour {
     // takes in characeter and runs through dialogue options
 
     public GameObject personWords;
+    public GameObject guardWords;
 
     public GameObject character;
-
+    public GameObject guard;
 
 
     public float bored; //  Calm
@@ -24,7 +25,10 @@ public class DialogueGenerator : MonoBehaviour {
 
 
 
-    public float phase;
+    public float phase; // This Dude Is Important
+
+
+
     public bool correct;
     public bool charAlive;
 
@@ -37,10 +41,13 @@ public class DialogueGenerator : MonoBehaviour {
         pressure = GameObject.Find("PressureButton").GetComponent<Button>();
 
         personWords = GameObject.Find("personWords");
+        guardWords = GameObject.Find("guardWords");
 
         character = GameObject.Find("Character");
+        guard = GameObject.Find("Guard_BaseModel");
 
-
+        guard.SetActive(false);
+        guardWords.SetActive(false);
 
         bored = -1;
         confused = -1;
@@ -86,6 +93,10 @@ public class DialogueGenerator : MonoBehaviour {
             personWords.GetComponent<TextMesh>().text = "Nope. You're being creepy. I'm gone.(Press Q)";
             phase = 1;
         }
+
+
+
+
     }
 
     void inspireClick0()
@@ -117,6 +128,12 @@ public class DialogueGenerator : MonoBehaviour {
             personWords.GetComponent<TextMesh>().text = "You had me, really. I'm just bored now( Press Q)";
             phase = 1;
         }
+
+
+
+
+
+
     }
  
     void pressureClick0()
@@ -145,7 +162,19 @@ public class DialogueGenerator : MonoBehaviour {
         }
         if (angry == 4)
         {
-            personWords.GetComponent<TextMesh>().text = "F*** off, You can't make me. Peace (Press Q)";
+            personWords.GetComponent<TextMesh>().text = "F*** off, You can't make me.";
+            
+        }
+
+
+
+
+        if (angry == 5 )
+        {
+            guard.SetActive(true);
+            guardWords.SetActive(true);
+            guardWords.GetComponent<TextMesh>().text = "Sir, we are goin to have to ask you to leave";
+            personWords.GetComponent<TextMesh>().text = "Press Q";
             phase = 1;
         }
 
@@ -169,16 +198,31 @@ public class DialogueGenerator : MonoBehaviour {
                 personWords.GetComponent<TextMesh>().text = " ";
                 charAlive = false;
                 personWords.SetActive(false);
+                guard.SetActive(false);
+                guardWords.SetActive(false);
+
             }
 
         }
+
+        if (Input.GetKey(KeyCode.R))
+        {
+            phase = 0;
+            bored = -1;
+            confused = -1;
+            angry = -1;
+            personWords.SetActive(true);
+            personWords.GetComponent<TextMesh>().text = "Am I at the Right Place? (Q)";
+
+        }
+
+
+
             
     }
 
-    IEnumerator WaitUntilReloaded()
-        {
-            yield return new WaitForSeconds(300);
-        }
+
+
 
     }
 

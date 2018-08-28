@@ -80,36 +80,23 @@ public class CameraController : MonoBehaviour {
 
 
 
-
             transform.position = Vector3.Lerp(transform.position, pcObj.transform.position + rotation * dir, 16f * Time.deltaTime);
             transform.LookAt(pcObj.transform.position);
 
-            //Debug.DrawRay(cameraOrigin, fpsCam.transform.forward, Color.green);
+            
 
             if (Physics.Raycast(cameraOrigin, fpsCam.transform.forward, out hit))
             {
                 targetDistance = hit.distance;
 
                 Transform targetTransform = hit.transform;
-                //Debug.Log(targetTransform);
-
-                
 
                 GameObject targetObject = targetTransform.gameObject;
                 
                 sysText.GetComponent<Text>().text = targetObject.name;
 
-
-                //Renderer rend = targetObject.GetComponent<MeshRenderer>();
-
-                //targetObject.SetActive(false);
-                //Material oldMat = targetObject.GetComponent<Material>();
-
-                //targetObject.GetComponent<Material>().color = Color.white;
-
                 Animator targetAnimation = targetObject.GetComponent<Animator>();
 
-                
                 bool isOn = targetAnimation.enabled;
 
                 if (Input.GetKeyDown(KeyCode.E) && !isOn)

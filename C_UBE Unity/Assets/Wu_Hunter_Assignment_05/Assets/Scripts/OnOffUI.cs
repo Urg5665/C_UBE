@@ -12,7 +12,7 @@ public class OnOffUI : MonoBehaviour {
 
     public Canvas RetUI;
 
-   
+    public DialogueGenerator dInst;
 
     
 
@@ -22,22 +22,28 @@ public class OnOffUI : MonoBehaviour {
         dUI = GetComponent<Canvas>();
         RetUI = GameObject.Find("ReticuleCanvas").GetComponent<Canvas>();
         isOn = false;
+
+
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        if (((Input.GetKeyDown(KeyCode.Q)) && !isOn)) {
-            dUI.enabled = true;
-            RetUI.enabled = false;
-            isOn = true;  
-        }
-        else if (((Input.GetKeyDown(KeyCode.Q)) && isOn))
-        {
-            dUI.enabled = false;
-            RetUI.enabled = true;
-            isOn = false;
-        }
+    
+            if (((Input.GetKeyDown(KeyCode.Q)) && !isOn))
+            {
+                dUI.enabled = true;
+                RetUI.enabled = false;
+                isOn = true;
+            }
+            else if (((Input.GetKeyDown(KeyCode.Q)) && isOn))
+            {
+                dUI.enabled = false;
+                RetUI.enabled = true;
+                isOn = false;
+            }
+        
+
 
     }
 }
