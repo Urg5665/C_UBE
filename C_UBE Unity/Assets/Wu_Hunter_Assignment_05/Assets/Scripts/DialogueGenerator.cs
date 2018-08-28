@@ -15,7 +15,7 @@ public class DialogueGenerator : MonoBehaviour {
     public GameObject guard;
 
 
-    public float bored; //  Calm
+    public float scared; //  Calm
     public float confused; // Inspire
     public float angry; // Pressure
 
@@ -49,7 +49,7 @@ public class DialogueGenerator : MonoBehaviour {
         guard.SetActive(false);
         guardWords.SetActive(false);
 
-        bored = -1;
+        scared = -1;
         confused = -1;
         angry = -1;
 
@@ -71,29 +71,61 @@ public class DialogueGenerator : MonoBehaviour {
     {
         if (phase == 0)
             correct = true;
-            bored += 1;
-        if (bored == 0)
+            scared += 1;
+        if (scared == 0)
         {
             personWords.GetComponent<TextMesh>().text = "Phew, thats a relief.";
         }
-        if (bored == 1)
+        if (scared == 1)
         {
             personWords.GetComponent<TextMesh>().text = "Hey I'm fine - I'm ok now";
         }
-        if (bored == 2)
+        if (scared == 2)
         {
             personWords.GetComponent<TextMesh>().text = "Why are you still... Whats wrong?";
         }
-        if (bored == 3)
+        if (scared == 3)
         {
             personWords.GetComponent<TextMesh>().text = "You're hiding something about the C_UBE";
         }
-        if (bored == 4)
+        if (scared == 4)
         {
-            personWords.GetComponent<TextMesh>().text = "Nope. You're being creepy. I'm gone.(Press Q)";
+            personWords.GetComponent<TextMesh>().text = "Nope. You're being too creepy.";
+            
+        }
+        if (scared == 5)
+        {
+            personWords.GetComponent<TextMesh>().text = "(Press Q)";
+            guardWords.SetActive(true);
+            guardWords.GetComponent<TextMesh>().text = "I'm Gone";
+            phase = 1;
+        }
+        if (confused == 5)
+        {
+            personWords.GetComponent<TextMesh>().text = "(Press Q)";
+            guardWords.SetActive(true);
+            guardWords.GetComponent<TextMesh>().text = "I hope you find someone smarter";
+            phase = 1;
+
+        }
+        if (angry == 5)
+        {
+            guard.SetActive(true);
+            guardWords.SetActive(true);
+            guardWords.GetComponent<TextMesh>().text = "Sir, we are goin to have to ask you to leave";
+            personWords.GetComponent<TextMesh>().text = "Press Q";
             phase = 1;
         }
 
+
+        if (angry > 2 && confused > 2 && scared > 2)
+        {
+            guard.SetActive(true);
+            guardWords.SetActive(true);
+            guardWords.GetComponent<TextMesh>().text = "You have passed the psych exam";
+            personWords.GetComponent<TextMesh>().text = "Todd will escort you to the C_UBE(Press Q)";
+            phase = 1;
+        }
 
 
 
@@ -125,15 +157,42 @@ public class DialogueGenerator : MonoBehaviour {
         }
         if (confused == 4)
         {
-            personWords.GetComponent<TextMesh>().text = "You had me, really. I'm just bored now( Press Q)";
+            personWords.GetComponent<TextMesh>().text = "You had me, really. I'm just bored now";
+            
+        }
+        if (scared == 5)
+        {
+            personWords.GetComponent<TextMesh>().text = "(Press Q)";
+            guardWords.SetActive(true);
+            guardWords.GetComponent<TextMesh>().text = "I'm Gone";
+            phase = 1;
+        }
+        if (confused == 5)
+        {
+            personWords.GetComponent<TextMesh>().text = "(Press Q)";
+            guardWords.SetActive(true);
+            guardWords.GetComponent<TextMesh>().text = "I hope you find someone smarter";
+            phase = 1;
+
+        }
+
+        if (angry == 5)
+        {
+            guard.SetActive(true);
+            guardWords.SetActive(true);
+            guardWords.GetComponent<TextMesh>().text = "Sir, we are goin to have to ask you to leave";
+            personWords.GetComponent<TextMesh>().text = "(Press Q)";
             phase = 1;
         }
 
-
-
-
-
-
+        if (angry > 2 && confused > 2 && scared > 2)
+        {
+            guard.SetActive(true);
+            guardWords.SetActive(true);
+            guardWords.GetComponent<TextMesh>().text = "You have passed the psych exam";
+            personWords.GetComponent<TextMesh>().text = "Todd will escort you to the C_UBE(Press Q)";
+            phase = 1;
+        }
     }
  
     void pressureClick0()
@@ -165,10 +224,21 @@ public class DialogueGenerator : MonoBehaviour {
             personWords.GetComponent<TextMesh>().text = "F*** off, You can't make me.";
             
         }
+        if (scared == 5)
+        {
+            personWords.GetComponent<TextMesh>().text = "(Press Q)";
+            guardWords.SetActive(true);
+            guardWords.GetComponent<TextMesh>().text = "I'm Gone";
+            phase = 1;
+        }
+        if (confused == 5)
+        {
+            personWords.GetComponent<TextMesh>().text = "(Press Q)";
+            guardWords.SetActive(true);
+            guardWords.GetComponent<TextMesh>().text = "I hope you find someone smarter";
+            phase = 1;
 
-
-
-
+        }
         if (angry == 5 )
         {
             guard.SetActive(true);
@@ -178,6 +248,14 @@ public class DialogueGenerator : MonoBehaviour {
             phase = 1;
         }
 
+        if (angry > 2 && confused > 2 && scared > 2)
+        {
+            guard.SetActive(true);
+            guardWords.SetActive(true);
+            guardWords.GetComponent<TextMesh>().text = "You have passed the psych exam";
+            personWords.GetComponent<TextMesh>().text = "Todd will escort you to the C_UBE(Press Q)";
+            phase = 1;
+        }
     }
 
     // Update is called once per frame
@@ -208,7 +286,7 @@ public class DialogueGenerator : MonoBehaviour {
         if (Input.GetKey(KeyCode.R))
         {
             phase = 0;
-            bored = -1;
+            scared = -1;
             confused = -1;
             angry = -1;
             personWords.SetActive(true);
