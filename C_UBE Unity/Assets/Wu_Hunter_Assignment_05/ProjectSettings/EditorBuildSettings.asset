@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/IntrrogationRoom.unity
     guid: 842239125a3321140b0bbc0b361f8ba2
+  - enabled: 1
+    path: Assets/Scenes/IntrrogationRoom_8_25.unity
+    guid: c6606217951e8604da84cab2cfccb5b1
   m_configObjects: {}
