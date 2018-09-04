@@ -1451,7 +1451,7 @@ MonoBehaviour:
   guardWords: {fileID: 0}
   character: {fileID: 0}
   guard: {fileID: 0}
-  bored: 0
+  scared: 0
   confused: 0
   angry: 0
   calm: {fileID: 0}
@@ -8948,8 +8948,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Controls:\nMouse - Camera\nWASD - Move\nQ - Talk \nE - Interact\nR - Reset
-    Game"
+  m_Text: "Controls:\nMouse - Camera\nWASD - Move\nQ - Talk \nE - Interact\n"
 --- !u!222 &939469120
 CanvasRenderer:
   m_ObjectHideFlags: 0
