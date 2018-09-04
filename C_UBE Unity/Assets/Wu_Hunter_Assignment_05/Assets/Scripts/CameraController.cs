@@ -30,6 +30,8 @@ public class CameraController : MonoBehaviour {
     public GameObject cabinet1;
     public GameObject cabinet2;
 
+    public GameObject news;
+
 
     //public LineRenderer laserLine;
 
@@ -42,15 +44,18 @@ public class CameraController : MonoBehaviour {
 
         cabinet1 = GameObject.Find("CabinetCanvas");
         cabinet2 = GameObject.Find("CabinetCanvas (1)");
+        news = GameObject.Find("NewsCanvas");
+
 
         fpsCam = GetComponent<Camera>();
 
         sysText = GameObject.Find("sysText");
 
-        Ray ray = fpsCam.ScreenPointToRay(Input.mousePosition);
+        //Ray ray = fpsCam.ScreenPointToRay(Input.mousePosition);
 
         cabinet1.SetActive(false);
         cabinet2.SetActive(false);
+        news.SetActive(false);
 
 
     }
@@ -117,9 +122,13 @@ public class CameraController : MonoBehaviour {
                     {
                         cabinet1.SetActive(true);
                     }
-                    if (targetObject.name == GameObject.Find("Filing_Cabinet_Open (1)").name)
+                    else if (targetObject.name == GameObject.Find("Cabinet  (E)").name)
                     {
                         cabinet2.SetActive(true);
+                    }
+                    else if (targetObject.name == GameObject.Find("Read News (E)").name)
+                    {
+                        news.SetActive(true);
                     }
 
                 }
@@ -130,9 +139,13 @@ public class CameraController : MonoBehaviour {
                     {
                         cabinet1.SetActive(false);
                     }
-                    if (targetObject.name == GameObject.Find("Filing_Cabinet_Open (1)").name)
+                    else if (targetObject.name == GameObject.Find("Cabinet  (E)").name)
                     {
                         cabinet2.SetActive(false);
+                    }
+                    else if (targetObject.name == GameObject.Find("Read News (E)").name)
+                    {
+                        news.SetActive(false);
                     }
 
                 }
