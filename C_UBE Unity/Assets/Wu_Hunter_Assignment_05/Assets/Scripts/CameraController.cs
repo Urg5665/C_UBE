@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Mark S 8_24
+// Mark S 9_4
 public class CameraController : MonoBehaviour {
 
     private GameObject cameraTarget;
@@ -27,6 +27,9 @@ public class CameraController : MonoBehaviour {
 
     public GameObject sysText;
 
+    public GameObject cabinet1;
+    public GameObject cabinet2;
+
 
     //public LineRenderer laserLine;
 
@@ -37,7 +40,8 @@ public class CameraController : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
 
-        //laserLine = GetComponentInChildren<LineRenderer>();
+        cabinet1 = GameObject.Find("CabinetCanvas");
+        cabinet2 = GameObject.Find("CabinetCanvas (1)");
 
         fpsCam = GetComponent<Camera>();
 
@@ -45,7 +49,10 @@ public class CameraController : MonoBehaviour {
 
         Ray ray = fpsCam.ScreenPointToRay(Input.mousePosition);
 
-        //selectionOutline = new Material(Material );
+        cabinet1.SetActive(false);
+        cabinet2.SetActive(false);
+
+
     }
     private void Update ()
     {
@@ -92,21 +99,44 @@ public class CameraController : MonoBehaviour {
                 Transform targetTransform = hit.transform;
 
                 GameObject targetObject = targetTransform.gameObject;
-                
+
                 sysText.GetComponent<Text>().text = targetObject.name;
 
                 Animator targetAnimation = targetObject.GetComponent<Animator>();
 
                 bool isOn = targetAnimation.enabled;
 
+
+
+
                 if (Input.GetKeyDown(KeyCode.E) && !isOn)
                 {
+
                     targetAnimation.enabled = true;
+                    if (targetObject.name == GameObject.Find("Cabinet (E)").name)
+                    {
+                        cabinet1.SetActive(true);
+                    }
+                    if (targetObject.name == GameObject.Find("Filing_Cabinet_Open (1)").name)
+                    {
+                        cabinet2.SetActive(true);
+                    }
+
                 }
                 else if (Input.GetKeyDown(KeyCode.E) && isOn)
                 {
                     targetAnimation.enabled = false;
+                    if (targetObject.name == GameObject.Find("Cabinet (E)").name)
+                    {
+                        cabinet1.SetActive(false);
+                    }
+                    if (targetObject.name == GameObject.Find("Filing_Cabinet_Open (1)").name)
+                    {
+                        cabinet2.SetActive(false);
+                    }
+
                 }
+               
 
 
 
@@ -117,6 +147,8 @@ public class CameraController : MonoBehaviour {
             {
                 sysText.GetComponent<Text>().text =  " ";
             }
+
+
 
 
 
